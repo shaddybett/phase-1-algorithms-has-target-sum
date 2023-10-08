@@ -1,20 +1,27 @@
-function hasTargetSum(array, target) {
-  // Write your algorithm here
+
+function hasTargetSum(arr, target) {
+  const seenNumbers = {}; // Initialize an empty object
+
+  for (let num of arr) {
+    const difference = target - num;
+    if (seenNumbers[difference]) {
+      // If the difference is seen, return true
+      return true;
+    }
+    seenNumbers[num] = true; // Add the current number to seenNumbers
+  }
+
+  // If no pairs are found, return false
+  return false;
 }
 
-/* 
-  Write the Big O time complexity of your function here
-*/
+// Example usage and testing
+console.log(hasTargetSum([3, 8, 12, 4, 11, 7], 10)); // Expected: true
+console.log(hasTargetSum([22, 19, 4, 6, 30], 25)); // Expected: true
+console.log(hasTargetSum([1, 2, 5], 4)); // Expected: false
+console.log(hasTargetSum([], 10)); // Expected: false
+console.log(hasTargetSum([1, 1, 1, 1, 1], 3)); // Expected: true
 
-/* 
-  Add your pseudocode here
-*/
-
-/*
-  Add written explanation of your solution here
-*/
-
-// You can run `node index.js` to view these console logs
 if (require.main === module) {
   // add your own custom tests in here
   console.log("Expecting: true");
